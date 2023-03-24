@@ -1,18 +1,28 @@
-function carregar() {
-  var msg = window.document.getElementById('msg')
-  var img =       window.document.getElementById('imagem')
-  var data = new Date()
-  var hora = data.getHours()
-  //var hora = 10
-  msg.innerHTML = `Agora são ${hora} horas.`
-  if (hora >= 0 && hora < 12){
-    img.src = 'Manha2.png'
-    document.body.style.background = '#e2cd9f'
-  } else if (hora >= 12 && hora < 18) {
-    img.src = 'Tarde2.png'
-    document.body.style.background = '#b9846f'
+let num = document.getSelector('input#fnum')
+let lista = document.querySelector('select#flista')
+let rest = document.querySelector('div#res')
+let valores = []
+
+function isNumero(n) {
+  if(Number(n) >= 1 && Number(n) <= 100) {
+    return true
   } else {
-    img.src = 'Noite2.png'
-    document.body.style.background = '#515154'
+    return false
+  }
+}
+
+function inLista(n, l){
+  if (l.indexOff(Number(n)) != -1) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function adicionar() {
+  if(isNumero(num.value) && !inLista(num.value, valores)) {
+    window.alert('ok')
+  } else {
+    window.alert('Valor inválido ou já encontrado na lista.')
   }
 }
